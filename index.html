@@ -22,9 +22,8 @@
   .wrap{max-width:540px;margin:0 auto;padding:48px 22px 56px;}
 
   /* ---- logo ---- */
-  .logoMark{width:44px;height:44px;background:var(--red);border-radius:8px;color:#fff;
-    display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;
-    font-weight:800;font-size:15px;letter-spacing:.02em;margin-bottom:26px;}
+  .logoWrap{margin-bottom:32px;}
+  .logo-svg{height:76px;width:auto;display:block;}
 
   /* ---- hero ---- */
   .kicker{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin:0 0 18px;}
@@ -118,7 +117,24 @@
 <body>
 <div class="wrap">
 
-  <div class="logoMark">IDH</div>
+  <div class="logoWrap">
+    <svg viewBox="0 0 480 120" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;500;600;700;800&amp;display=swap');
+          .dept { font-family: 'Sora', 'Helvetica Neue', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.6px; text-transform: uppercase; fill: #14151A; }
+          .parent { font-family: 'Sora', 'Helvetica Neue', sans-serif; font-weight: 500; font-size: 7.5px; letter-spacing: 1.35px; text-transform: uppercase; fill: #6B6F78; }
+          .mark { font-family: 'Sora', 'Helvetica Neue', sans-serif; font-weight: 800; font-size: 22px; fill: #ffffff; }
+        </style>
+      </defs>
+      <rect x="16" y="28" width="64" height="64" fill="#C8102E"/>
+      <text class="mark" x="48" y="68" text-anchor="middle">IDH</text>
+      <line x1="106" y1="22" x2="106" y2="98" stroke="#14151A" stroke-width="1"/>
+      <text class="dept" x="124" y="50">Strategic Planning</text>
+      <text class="dept" x="124" y="68">&amp; PMO</text>
+      <rect x="124" y="78" width="28" height="2" fill="#C8102E"/>
+      <text class="parent" x="124" y="94">INTEGRATED DIAGNOSTICS HOLDINGS</text>
+    </svg>
+  </div>
 
   <p class="kicker">New Patient App · QA Feedback</p>
   <h1 class="sora">Help us catch <em>every</em> issue before launch.</h1>
