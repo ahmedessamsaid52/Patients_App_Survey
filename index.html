@@ -133,8 +133,8 @@
 <div class="toast" id="toast">Submitting…</div>
 
 <script>
-// ⚠️ Paste your deployed Google Apps Script Web App URL below (ends with /exec)
-const SCRIPT_URL = https://script.google.com/macros/s/AKfycbxdwwYUEFPXLBKdtgrhey4MtdzqkXu2JqNDRLfBPbP92H1Y4Ib2JZxQRaKp_H7NUpKPSw/exec;
+// Google Apps Script Web App URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdwwYUEFPXLBKdtgrhey4MtdzqkXu2JqNDRLfBPbP92H1Y4Ib2JZxQRaKp_H7NUpKPSw/exec";
 
 function showOsTip(v){
   document.getElementById('tipIos').classList.toggle('show', v==='ios');
@@ -194,8 +194,6 @@ document.getElementById('fbForm').addEventListener('submit', async function(e){
       formData.append('imageType', file.type || 'image/png');
     }
 
-    // no-cors: Apps Script doesn't return readable CORS headers, but the
-    // request still reaches and is processed by the script server-side.
     await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData });
 
     showToast("✅ Feedback submitted. Thank you!", 4000);
