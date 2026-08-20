@@ -50,6 +50,12 @@
   .stepTitle{font-family:'Sora',sans-serif;font-weight:600;font-size:14.5px;color:var(--ink);margin:2px 0 4px;}
   .stepDesc{font-size:13px;line-height:1.55;color:var(--gray);margin:0;}
 
+  /* ---- known issue notice ---- */
+  .knownIssue{border-left:2px solid var(--gold);padding:2px 0 2px 16px;margin-bottom:34px;}
+  .knownIssueLabel{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 6px;}
+  .knownIssueTxt{font-size:13px;line-height:1.55;color:var(--gray);margin:0;}
+
   /* ---- shared fields ---- */
   .field{margin-top:22px;}
   .field:first-child{margin-top:0;}
@@ -107,8 +113,10 @@
   .btn:disabled{opacity:.55;}
   .note{font-size:11px;color:var(--gray);text-align:center;margin-top:14px;line-height:1.5;}
 
-  footer{text-align:center;color:var(--gray);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
-    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);}
+  footer{text-align:center;color:var(--gray);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;}
+  footer .supportLine{font-size:10.5px;}
+  footer .footerBrand{margin-top:8px;font-size:10px;letter-spacing:.08em;color:var(--gray);}
 
   .toast{
     position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
@@ -141,7 +149,7 @@
     </svg>
   </div>
 
-  <p class="kicker">New Patient App · QA Feedback</p>
+  <p class="kicker">New Patient App · Sprint 1 QA Feedback</p>
   <h1 class="sora">Help us catch <em>every</em> issue before launch.</h1>
 
   <div class="ornament"><div class="rule"></div>◆<div class="rule"></div></div>
@@ -172,6 +180,11 @@
   </div>
 
   <div class="ornament"><div class="rule"></div>◆<div class="rule"></div></div>
+
+  <div class="knownIssue">
+    <p class="knownIssueLabel">Already known</p>
+    <p class="knownIssueTxt">Some Branch Locations aren't correctly pinned on Google Maps yet — Branches / Governorates / Cities data is still being finalized with Operations, Marketing, and Master Data. No need to report this specific issue.</p>
+  </div>
 
   <form id="fbForm">
 
@@ -218,7 +231,11 @@
     <div class="note" id="noteText">Saved directly to the QA feedback log — no email needed.</div>
   </form>
 
-  <footer>Integrated Diagnostics Holdings · Beta Programme</footer>
+  <footer>
+    <span class="supportLine">Bugs, features, performance — Ahmed Essam · 01033370130</span>
+    <span class="supportLine">Installation issues — Ahmed Ezz · 01010646279</span>
+    <span class="footerBrand">Integrated Diagnostics Holdings · Beta Programme</span>
+  </footer>
 </div>
 
 <div class="toast" id="toast">Submitting…</div>
@@ -263,9 +280,12 @@ function resetRating(){
 }
 
 const SCREEN_OPTIONS = [
-  "Registration & Login","Adding Sub Accounts & Relatives","Tests History",
-  "Tests & Packages List","Branches Locations","Packages & Offers",
-  "News & events","Notification","Side Menu","Others"
+  "Registration & Login",
+  "Sub-Accounts & Relatives Management",
+  "Test History",
+  "Tests & Packages Directory",
+  "Branch Locations",
+  "Others"
 ];
 
 const issuesContainer = document.getElementById('issuesContainer');
