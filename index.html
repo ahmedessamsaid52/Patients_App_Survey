@@ -3,148 +3,275 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>New Patient App — Beta Feedback</title>
+<title>Bug Report — New Patient App Beta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root{
-    --idh-blue:#0B3D66;
-    --idh-teal:#0FA3A3;
-    --bg:#F4F7FA;
-    --card:#FFFFFF;
-    --text:#1B2733;
-    --muted:#6B7A89;
-    --border:#E2E8EF;
-    --danger:#D64545;
-    --radius:14px;
+    --red:#C8102E;
+    --ink:#161616;
+    --cream:#F7F4EC;
+    --gray:#726D62;
+    --line:#E3DFD2;
+    --gold:#C9A227;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);}
-  .wrap{max-width:560px;margin:0 auto;padding:20px 16px 60px;}
-  header{text-align:center;padding:18px 0 10px;}
-  header h1{font-size:20px;margin:0 0 4px;color:var(--idh-blue);}
-  header p{margin:0;color:var(--muted);font-size:14px;}
-  .card{background:var(--card);border-radius:var(--radius);padding:18px;margin-top:16px;box-shadow:0 1px 3px rgba(15,30,50,0.08);border:1px solid var(--border);}
-  .steps{display:flex;flex-direction:column;gap:10px;}
-  .step{display:flex;gap:10px;align-items:flex-start;}
-  .step .num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--idh-teal);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;}
-  .step .txt{font-size:14px;line-height:1.4;}
-  .step .txt b{color:var(--idh-blue);}
-  label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px;color:var(--idh-blue);}
-  label.required:after{content:" *";color:var(--danger);}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);
+    font-family:'Geist',-apple-system,Segoe UI,Roboto,sans-serif;}
+  .sora{font-family:'Sora',sans-serif;}
+  .wrap{max-width:540px;margin:0 auto;padding:48px 22px 56px;}
+
+  /* ---- logo ---- */
+  .logoMark{width:44px;height:44px;background:var(--red);border-radius:8px;color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;
+    font-weight:800;font-size:15px;letter-spacing:.02em;margin-bottom:26px;}
+
+  /* ---- hero ---- */
+  .kicker{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin:0 0 18px;}
+  h1.sora{font-size:30px;font-weight:400;line-height:1.22;margin:0 0 14px;color:var(--ink);letter-spacing:-.01em;}
+  h1.sora em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--red);font-size:1.08em;}
+  .sub{font-size:14.5px;color:var(--gray);line-height:1.6;margin:0;max-width:420px;}
+
+  /* ---- ornament divider ---- */
+  .ornament{display:flex;align-items:center;justify-content:center;gap:10px;margin:36px 0;color:var(--gold);font-size:11px;}
+  .ornament .rule{height:1px;width:56px;background:var(--line);}
+
+  /* ---- eyebrow section label ---- */
+  .label-head{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);
+    margin:0 0 18px;text-align:center;}
+
+  /* ---- steps ---- */
+  .steps{display:flex;flex-direction:column;gap:22px;}
+  .step{display:flex;gap:16px;align-items:flex-start;}
+  .ring{flex:0 0 34px;height:34px;border-radius:50%;border:1px solid;display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:600;font-size:13px;background:transparent;}
+  .ring.r-red{border-color:var(--red);color:var(--red);}
+  .ring.r-ink{border-color:var(--ink);color:var(--ink);}
+  .ring.r-gold{border-color:var(--gold);color:var(--gold);}
+  .stepTitle{font-family:'Sora',sans-serif;font-weight:600;font-size:14.5px;color:var(--ink);margin:2px 0 4px;}
+  .stepDesc{font-size:13px;line-height:1.55;color:var(--gray);margin:0;}
+
+  /* ---- shared fields ---- */
+  .field{margin-top:22px;}
+  .field:first-child{margin-top:0;}
+  label{display:block;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gray);margin-bottom:9px;}
+  label.required:after{content:" •";color:var(--red);}
+
   input[type=text],select,textarea{
-    width:100%;padding:12px 12px;border:1px solid var(--border);border-radius:10px;
-    font-size:15px;background:#fbfcfe;color:var(--text);
+    width:100%;padding:9px 2px;border:none;border-bottom:1px solid var(--line);border-radius:0;
+    font-size:15.5px;font-family:'Geist',sans-serif;background:transparent;color:var(--ink);
   }
-  textarea{min-height:100px;resize:vertical;}
-  input[readonly]{background:#EEF2F6;color:var(--muted);}
-  .hint{font-size:12px;color:var(--muted);margin-top:4px;}
-  .file-row{
-    border:1.5px dashed var(--idh-teal);border-radius:10px;padding:14px;text-align:center;background:#F0FBFB;
+  select{
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23C8102E' stroke-width='1.3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 4px center;padding-right:22px;
   }
-  .file-row input[type=file]{display:block;margin:8px auto 0;font-size:13px;}
-  .btn{
-    display:block;width:100%;padding:15px;border:none;border-radius:12px;
-    background:var(--idh-blue);color:#fff;font-size:16px;font-weight:600;margin-top:20px;cursor:pointer;
-  }
-  .btn:active{opacity:0.85;}
-  .btn.secondary{background:#fff;color:var(--idh-blue);border:1.5px solid var(--idh-blue);margin-top:10px;}
-  .note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5;}
-  .os-tip{display:none;font-size:12px;background:#EFF5FF;border-radius:8px;padding:8px 10px;margin-top:8px;color:var(--idh-blue);}
+  input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--red);}
+  textarea{min-height:88px;resize:vertical;line-height:1.55;}
+  input[readonly]{color:var(--gray);}
+  .hint{font-size:11.5px;color:var(--gray);margin-top:8px;}
+
+  .os-tip{display:none;font-size:12px;background:#fff;border:1px solid var(--line);
+    border-radius:6px;padding:9px 11px;margin-top:10px;color:var(--ink);}
   .os-tip.show{display:block;}
+  .os-tip b{color:var(--red);}
+
+  .file-row{border:1px solid var(--line);border-radius:6px;padding:22px;text-align:center;}
+  .file-row .caption{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);}
+  .file-row input[type=file]{border:none;padding:0;display:block;margin:12px auto 0;font-size:12.5px;font-family:'Geist',sans-serif;}
+
+  /* ---- repeatable issue cards ---- */
+  #issuesContainer{margin-top:6px;}
+  .issueCard{border:1px solid var(--line);border-radius:8px;padding:22px 20px;margin-bottom:16px;background:#fff;}
+  .issueHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}
+  .issueLabel{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red);}
+  .removeIssue{background:none;border:none;padding:0;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gray);cursor:pointer;font-family:'Geist',sans-serif;font-weight:600;}
+  .removeIssue:hover{color:var(--red);}
+  .addIssueBtn{display:block;width:100%;padding:13px;border:1px solid var(--ink);border-radius:4px;background:transparent;
+    color:var(--ink);font-family:'Geist',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;cursor:pointer;margin-top:2px;}
+  .addIssueBtn:active{opacity:.7;}
+
+  .btn{
+    display:block;width:100%;padding:16px;border:none;border-radius:4px;
+    background:var(--ink);color:var(--cream);font-family:'Geist',sans-serif;font-size:12px;font-weight:700;
+    margin-top:26px;cursor:pointer;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .btn:active{opacity:.88;}
+  .btn:disabled{opacity:.55;}
+  .note{font-size:11px;color:var(--gray);text-align:center;margin-top:14px;line-height:1.5;}
+
+  footer{text-align:center;color:var(--gray);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);}
+
   .toast{
     position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
-    background:#1B2733;color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;
-    opacity:0;pointer-events:none;transition:opacity .25s;z-index:10;max-width:90%;text-align:center;
+    background:var(--ink);color:var(--cream);padding:11px 18px;border-radius:5px;
+    font-size:12.5px;letter-spacing:.02em;opacity:0;pointer-events:none;transition:opacity .25s;z-index:10;
+    max-width:90%;text-align:center;
   }
   .toast.show{opacity:1;}
-  footer{text-align:center;color:var(--muted);font-size:11px;margin-top:26px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1>New Patient App — Beta Feedback</h1>
-    <p>Help us catch issues before launch. Takes under 1 minute per report.</p>
-  </header>
 
-  <div class="card">
-    <div class="steps">
-      <div class="step"><div class="num">1</div><div class="txt">Open and use the <b>New Patient App</b> as you normally would.</div></div>
-      <div class="step"><div class="num">2</div><div class="txt">If something looks wrong or breaks, <b>take a screenshot</b> right away.</div></div>
-      <div class="step"><div class="num">3</div><div class="txt">Come back to this page, attach the screenshot, add a short comment, and tap <b>Submit</b>.</div></div>
+  <div class="logoMark">IDH</div>
+
+  <p class="kicker">New Patient App · QA Feedback</p>
+  <h1 class="sora">Help us catch <em>every</em> issue before launch.</h1>
+
+  <div class="ornament"><div class="rule"></div>◆<div class="rule"></div></div>
+
+  <p class="label-head">Before you begin</p>
+  <div class="steps">
+    <div class="step">
+      <div class="ring r-red">1</div>
+      <div>
+        <p class="stepTitle sora">Use the app</p>
+        <p class="stepDesc">Open and use the New Patient App as you normally would.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="ring r-ink">2</div>
+      <div>
+        <p class="stepTitle sora">Capture it</p>
+        <p class="stepDesc">Each time something looks wrong or breaks, take a screenshot right away.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="ring r-gold">3</div>
+      <div>
+        <p class="stepTitle sora">Report back</p>
+        <p class="stepDesc">Return here, add one issue per bug found, and submit them all together.</p>
+      </div>
     </div>
   </div>
 
-  <div class="card">
-    <form id="fbForm">
+  <div class="ornament"><div class="rule"></div>◆<div class="rule"></div></div>
 
-      <label class="required">Your Name & Role</label>
+  <form id="fbForm">
+
+    <div class="field">
+      <label class="required">Reporter — name &amp; role</label>
       <input type="text" id="nameRole" placeholder="e.g. Sara Ahmed — QA Lead" required>
+    </div>
 
-      <label class="required">Screen / Feature being tested</label>
-      <select id="screenArea" required>
-        <option value="" disabled selected>Select a screen or feature</option>
-        <option>Registration & Login</option>
-        <option>Adding Sub Accounts & Relatives</option>
-        <option>Tests History</option>
-        <option>Tests & Packages List</option>
-        <option>Branches Locations</option>
-        <option>Packages & Offers</option>
-        <option>News & events</option>
-        <option>Notification</option>
-        <option>Side Menu</option>
-        <option>Others</option>
-      </select>
-
-      <label class="required">Your Device</label>
+    <div class="field">
+      <label class="required">Test device</label>
       <select id="deviceOs" required onchange="showOsTip(this.value)">
         <option value="" disabled selected>Select device type</option>
         <option value="ios">iPhone / iPad (iOS)</option>
         <option value="android">Android phone / tablet</option>
       </select>
+      <div id="tipIos" class="os-tip">iOS: press <b>Side button + Volume Up</b> together.</div>
+      <div id="tipAndroid" class="os-tip">Android: press <b>Power + Volume Down</b> together (varies by phone).</div>
+    </div>
 
-      <div id="tipIos" class="os-tip">
-        📸 Screenshot on iOS: press <b>Side button + Volume Up</b> at the same time.
-      </div>
-      <div id="tipAndroid" class="os-tip">
-        📸 Screenshot on Android: press <b>Power + Volume Down</b> at the same time (varies slightly by phone).
-      </div>
-
+    <div class="field">
       <label>App version / build</label>
       <input type="text" id="appVersion" value="1.0.3 V4" readonly>
+    </div>
 
-      <label class="required">Comment — what happened?</label>
-      <textarea id="comment" placeholder="Describe what you expected vs. what actually happened..." required></textarea>
+    <div class="field">
+      <label>Issues found</label>
+      <div id="issuesContainer"></div>
+      <button type="button" class="addIssueBtn" id="addIssueBtn">+ Add another issue</button>
+    </div>
 
-      <label class="required">Attach Screenshot</label>
-      <div class="file-row">
-        <span>Tap below to choose or take a photo of your screenshot</span>
-        <input type="file" id="screenshot" accept="image/*" capture="environment">
-      </div>
-      <div class="hint">On iOS/Android this opens your Photos app — pick the screenshot you just took.</div>
+    <button type="submit" class="btn" id="submitBtn">Submit report</button>
+    <div class="note" id="noteText">Saved directly to the QA feedback log — no email needed.</div>
+  </form>
 
-      <button type="submit" class="btn" id="submitBtn">Submit Feedback</button>
-      <div class="note">Your comment and screenshot are saved directly to our feedback log — no email needed.</div>
-    </form>
-  </div>
-
-  <footer>New Patient App Beta Program · IDH</footer>
+  <footer>Integrated Diagnostics Holdings · Beta Programme</footer>
 </div>
 
 <div class="toast" id="toast">Submitting…</div>
 
 <script>
-// ⚠️ Paste your deployed Google Apps Script Web App URL below (ends with /exec)
-const SCRIPT_URL = https://script.google.com/macros/s/AKfycbxdwwYUEFPXLBKdtgrhey4MtdzqkXu2JqNDRLfBPbP92H1Y4Ib2JZxQRaKp_H7NUpKPSw/exec;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdwwYUEFPXLBKdtgrhey4MtdzqkXu2JqNDRLfBPbP92H1Y4Ib2JZxQRaKp_H7NUpKPSw/exec";
+
+const now = new Date();
+const datePart = now.toISOString().slice(0,10).replace(/-/g,'');
+const randPart = Math.floor(1000 + Math.random()*9000);
+const reqId = `${datePart}-${randPart}`;
 
 function showOsTip(v){
   document.getElementById('tipIos').classList.toggle('show', v==='ios');
   document.getElementById('tipAndroid').classList.toggle('show', v==='android');
 }
 
+const SCREEN_OPTIONS = [
+  "Registration & Login","Adding Sub Accounts & Relatives","Tests History",
+  "Tests & Packages List","Branches Locations","Packages & Offers",
+  "News & events","Notification","Side Menu","Others"
+];
+
+const issuesContainer = document.getElementById('issuesContainer');
+let issueCount = 0;
+
+function issueTemplate(n){
+  const options = SCREEN_OPTIONS.map(o => `<option>${o}</option>`).join('');
+  return `
+  <div class="issueCard" data-n="${n}">
+    <div class="issueHead">
+      <span class="issueLabel">Issue ${String(n).padStart(2,'0')}</span>
+      <button type="button" class="removeIssue">Remove</button>
+    </div>
+    <div class="field">
+      <label class="required">Screen / feature under test</label>
+      <select class="issueScreen" required>
+        <option value="" disabled selected>Select a screen or feature</option>
+        ${options}
+      </select>
+    </div>
+    <div class="field">
+      <label class="required">Observation — what happened?</label>
+      <textarea class="issueComment" placeholder="Describe what you expected vs. what actually happened..." required></textarea>
+    </div>
+    <div class="field">
+      <label>Attachment — screenshot</label>
+      <div class="file-row">
+        <span class="caption">Choose from photos or files</span>
+        <input type="file" class="issueFile" accept="image/*">
+      </div>
+    </div>
+  </div>`;
+}
+
+function renumberIssues(){
+  const cards = issuesContainer.querySelectorAll('.issueCard');
+  cards.forEach((c,i)=>{ c.querySelector('.issueLabel').textContent = `Issue ${String(i+1).padStart(2,'0')}`; });
+  updateRemoveVisibility();
+}
+
+function updateRemoveVisibility(){
+  const cards = issuesContainer.querySelectorAll('.issueCard');
+  cards.forEach(c=>{
+    c.querySelector('.removeIssue').style.display = cards.length > 1 ? 'inline-block' : 'none';
+  });
+}
+
+function addIssue(){
+  issueCount++;
+  issuesContainer.insertAdjacentHTML('beforeend', issueTemplate(issueCount));
+  const card = issuesContainer.lastElementChild;
+  card.querySelector('.removeIssue').addEventListener('click', ()=>{
+    card.remove();
+    renumberIssues();
+  });
+  updateRemoveVisibility();
+}
+
+document.getElementById('addIssueBtn').addEventListener('click', addIssue);
+addIssue(); // start with one issue block
+
 function fileToBase64(file){
   return new Promise((resolve, reject)=>{
     const reader = new FileReader();
-    reader.onload = () => resolve(reader.result.split(',')[1]); // strip data:...;base64,
+    reader.onload = () => resolve(reader.result.split(',')[1]);
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
@@ -162,51 +289,75 @@ document.getElementById('fbForm').addEventListener('submit', async function(e){
   const btn = document.getElementById('submitBtn');
 
   const name = document.getElementById('nameRole').value.trim();
-  const screen = document.getElementById('screenArea').value;
-  const device = document.getElementById('deviceOs').value === 'ios' ? 'iPhone/iPad (iOS)' : 'Android';
+  const deviceVal = document.getElementById('deviceOs').value;
+  const device = deviceVal === 'ios' ? 'iPhone/iPad (iOS)' : 'Android';
   const version = document.getElementById('appVersion').value.trim();
-  const comment = document.getElementById('comment').value.trim();
-  const fileInput = document.getElementById('screenshot');
-  const hasFile = fileInput.files && fileInput.files.length > 0;
 
-  if (!name || !screen || !document.getElementById('deviceOs').value || !comment){
-    showToast("Please fill in all required fields.", 3000);
+  const cards = Array.from(issuesContainer.querySelectorAll('.issueCard'));
+
+  if (!name || !deviceVal){
+    showToast("Please fill in reporter and device.", 3000);
     return;
+  }
+  if (cards.length === 0){
+    showToast("Add at least one issue.", 3000);
+    return;
+  }
+  for (const card of cards){
+    const screen = card.querySelector('.issueScreen').value;
+    const comment = card.querySelector('.issueComment').value.trim();
+    if (!screen || !comment){
+      const label = card.querySelector('.issueLabel').textContent;
+      showToast(`Please complete ${label} before submitting.`, 3500);
+      return;
+    }
   }
 
   btn.disabled = true;
   btn.textContent = "Submitting...";
-  showToast("Submitting your feedback…", 4000);
+  showToast(cards.length > 1 ? `Submitting ${cards.length} issues…` : "Submitting your report…", 4000);
 
   try{
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('screen', screen);
-    formData.append('device', device);
-    formData.append('appVersion', version);
-    formData.append('comment', comment);
+    for (let i = 0; i < cards.length; i++){
+      const card = cards[i];
+      const screen = card.querySelector('.issueScreen').value;
+      const comment = card.querySelector('.issueComment').value.trim();
+      const fileInput = card.querySelector('.issueFile');
+      const hasFile = fileInput.files && fileInput.files.length > 0;
 
-    if (hasFile){
-      const file = fileInput.files[0];
-      const base64 = await fileToBase64(file);
-      formData.append('imageData', base64);
-      formData.append('imageName', file.name);
-      formData.append('imageType', file.type || 'image/png');
+      const formData = new FormData();
+      formData.append('reqId', cards.length > 1 ? `${reqId}-${i+1}` : reqId);
+      formData.append('name', name);
+      formData.append('screen', screen);
+      formData.append('device', device);
+      formData.append('appVersion', version);
+      formData.append('comment', comment);
+      formData.append('issueIndex', i+1);
+      formData.append('issueTotal', cards.length);
+
+      if (hasFile){
+        const file = fileInput.files[0];
+        const base64 = await fileToBase64(file);
+        formData.append('imageData', base64);
+        formData.append('imageName', file.name);
+        formData.append('imageType', file.type || 'image/png');
+      }
+
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData });
     }
 
-    // no-cors: Apps Script doesn't return readable CORS headers, but the
-    // request still reaches and is processed by the script server-side.
-    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData });
-
-    showToast("✅ Feedback submitted. Thank you!", 4000);
+    showToast(cards.length > 1 ? `${cards.length} issues submitted. Thank you.` : "Report submitted. Thank you.", 4000);
     this.reset();
     document.getElementById('tipIos').classList.remove('show');
     document.getElementById('tipAndroid').classList.remove('show');
+    issuesContainer.innerHTML = '';
+    issueCount = 0;
+    addIssue();
   } catch(err){
     showToast("Something went wrong. Please try again.", 4000);
   } finally {
     btn.disabled = false;
-    btn.textContent = "Submit Feedback";
+    btn.textContent = "Submit report";
   }
 });
 </script>
