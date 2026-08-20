@@ -194,6 +194,12 @@
     </div>
 
     <div class="field">
+      <label class="required">Phone number registered with the app</label>
+      <input type="tel" id="registeredPhone" placeholder="e.g. 01012345678" required>
+      <div class="hint">The number you used to sign up — helps us look up your account.</div>
+    </div>
+
+    <div class="field">
       <label class="required">Test device</label>
       <select id="deviceOs" required onchange="showOsTip(this.value)">
         <option value="" disabled selected>Select device type</option>
@@ -368,14 +374,15 @@ document.getElementById('fbForm').addEventListener('submit', async function(e){
   const btn = document.getElementById('submitBtn');
 
   const name = document.getElementById('nameRole').value.trim();
+  const registeredPhone = document.getElementById('registeredPhone').value.trim();
   const deviceVal = document.getElementById('deviceOs').value;
   const device = deviceVal === 'ios' ? 'iPhone/iPad (iOS)' : 'Android';
   const version = document.getElementById('appVersion').value.trim();
 
   const cards = Array.from(issuesContainer.querySelectorAll('.issueCard'));
 
-  if (!name || !deviceVal){
-    showToast("Please fill in reporter and device.", 3000);
+  if (!name || !registeredPhone || !deviceVal){
+    showToast("Please fill in reporter, registered phone, and device.", 3000);
     return;
   }
   if (selectedRating === 0){
@@ -411,6 +418,7 @@ document.getElementById('fbForm').addEventListener('submit', async function(e){
       const formData = new FormData();
       formData.append('reqId', cards.length > 1 ? `${reqId}-${i+1}` : reqId);
       formData.append('name', name);
+      formData.append('registeredPhone', registeredPhone);
       formData.append('screen', screen);
       formData.append('device', device);
       formData.append('appVersion', version);
